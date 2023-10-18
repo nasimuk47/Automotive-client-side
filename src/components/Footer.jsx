@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-black text-white rounded">
+            <footer className="footer footer-center p-10 bg-black text-white rounded mt-5">
                 <div className="flex">
                     <img
                         className="w-[50px] h-[50px] rounded-full"
