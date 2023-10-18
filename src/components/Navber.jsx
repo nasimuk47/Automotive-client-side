@@ -8,7 +8,7 @@ const Navber = () => {
 
     return (
         <div>
-            <div className="flex justify-between items-center mt-2 px-4 bg-[#FFFFFFF2] bg-sky-50 rounded-md h-20">
+            <div className="flex justify-between items-center mt-2 px-4 bg-[#FFFFFFF2] bg-red-100 rounded-md h-20">
                 <h1>
                     <img
                         className="h-14 w-20 rounded-md"

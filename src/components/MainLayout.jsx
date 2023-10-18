@@ -3,7 +3,7 @@ import Navber from "./Navber";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="w-[1320px] mx-auto">
             <Navber></Navber>
 
             <Outlet></Outlet>
