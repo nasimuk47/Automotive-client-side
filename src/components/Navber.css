@@ -1,0 +1,11 @@
+@media (max-width: 767px) {
+    .login-registration-links {
+        display: none;
+    }
+    .user-email {
+        display: none;
+    }
+    .login {
+        display: none;
+    }
+}

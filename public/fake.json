@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "img": "https://i.ibb.co/pxfsXnr/1.jpg",
+      "Name": "Concert Poster",
+      "Brand_Name": "Toyota",
+      "Type": "Poster",
+      "Price": 15.99,
+      "Rating": 4.7
+    },
+    {
+      "id": 2,
+      "img": "https://i.ibb.co/XJtnQ2X/2.png",
+      "Name": "Album Cover",
+      "Brand_Name": "BMW",
+      "Type": "Art Print",
+      "Price": 12.50,
+      "Rating": 4.2
+    },
+    {
+      "id": 3,
+      "img": "https://i.ibb.co/gwwMkww/3.jpg",
+      "Name": "Concert Ticket",
+      "Brand_Name": "Toyota",
+      "Type": "Ticket",
+      "Price": 30.00,
+      "Rating": 4.9
+    },
+    {
+      "id": 4,
+      "img": "https://i.ibb.co/W0L8cX9/4.jpg",
+      "Name": "Music Festival Banner",
+      "Brand_Name": "BMW",
+      "Type": "Banner",
+      "Price": 49.99,
+      "Rating": 4.5
+    },
+    {
+      "id": 5,
+      "img": "https://i.ibb.co/C8mqkGy/5.jpg",
+      "Name": "Band Logo",
+      "Brand_Name": "BMW",
+      "Type": "Logo Design",
+      "Price": 75.00,
+      "Rating": 4.8
+    },
+    {
+      "id": 6,
+      "img": "https://i.ibb.co/SyS80ks/7.jpg",
+      "Name": "Concert Poster",
+      "Brand_Name": "Mercedes-Benz",
+      "Type": "Poster",
+      "Price": 18.75,
+      "Rating": 4.3
+    },
+    {
+      "id": 7,
+      "img": "https://i.ibb.co/wWsjwMY/bmw1.jpg",
+      "Name": "Tesla",
+      "Brand_Name": "Honda",
+      "Type": "Car Photo",
+      "Price": 50.00,
+      "Rating": 4.6
+    },
+    {
+      "id": 8,
+      "img": "https://i.ibb.co/q7SF492/bmw2.jpg",
+      "Name": "BMW Image 2",
+      "Brand_Name": "Honda",
+      "Type": "Car Photo",
+      "Price": 45.00,
+      "Rating": 4.4
+    },
+    {
+      "id": 9,
+      "img": "https://i.ibb.co/fpMxQfn/bmw3.jpg",
+      "Name": "BMW Image 3",
+      "Brand_Name": "Ford",
+      "Type": "Car Photo",
+      "Price": 55.00,
+      "Rating": 4.7
+    },
+    {
+      "id": 10,
+      "img": "https://i.ibb.co/60dHQK0/bmw-driversel.png",
+      "Name": "BMW Driver's Seat",
+      "Brand_Name": "Ford",
+      "Type": "Car Photo",
+      "Price": 60.00,
+      "Rating": 4.2
+    }
+  ]
+  

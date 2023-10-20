@@ -13,6 +13,8 @@ import Login from "./components/Auth/Login";
 import AuthProvider from "./components/Auth/Authprovider";
 import Registration from "./components/Auth/Registration";
 import NotFound from "./components/NotFound";
+import BrandDetails from "./components/Database/BrandDetails";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,11 +27,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/AddProduct",
-                element: <AddProduct></AddProduct>,
+                element: (
+                    <PrivateRoute>
+                        <AddProduct></AddProduct>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/MyCart",
                 element: <MyCart></MyCart>,
+            },
+            {
+                path: "/brands/:", // Dynamic route for brand details
+                element: <BrandDetails></BrandDetails>,
             },
 
             {
