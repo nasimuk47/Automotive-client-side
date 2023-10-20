@@ -8,12 +8,10 @@ const ProductDetails = () => {
     const [productData, setProductData] = useState(null);
 
     useEffect(() => {
-        fetch("/fake.json")
+        fetch("http://localhost:5000/card")
             .then((response) => response.json())
             .then((data) => {
-                const product = data.find(
-                    (item) => item.id === parseInt(productId, 10)
-                );
+                const product = data.find((item) => item._id === productId);
                 setProductData(product);
             })
             .catch((error) => console.error(error));
@@ -30,23 +28,27 @@ const ProductDetails = () => {
                     <figure>
                         <img
                             className="w-full"
-                            src={productData.img}
+                            src={productData.photo}
                             alt="Product"
                         />
                     </figure>
                     <div className="card-body text-center bg-gray-200">
                         <p className="text-xl font-bold">
-                            Brand Name: {productData.Brand_Name}
+                            Brand Name: {productData.brand}
+                        </p>
+                        <p className="text-xl sans">
+                            {productData.description}
                         </p>
                         <p className="text-xl font-sans">
-                            Type: {productData.Type}
+                            Type: {productData.type}
                         </p>
                         <p className="text-xl sans">
-                            Price: ${productData.Price}
+                            Price: ${productData.price}
                         </p>
                         <p className="text-xl sans">
-                            Rating: {productData.Rating}
+                            Rating: {productData.rating}
                         </p>
+
                         <div className="card-actions justify-end">
                             <button className="btn btn-primary">
                                 ADD TO CART

@@ -1,21 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 
 const BrandDetails = () => {
     const { brand_name } = useParams();
     const [brandData, setBrandData] = useState(null);
-    const navigate = useNavigate(); // Use the useNavigate hook for navigation
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/fake.json")
+        fetch("http://localhost:5000/card")
             .then((response) => response.json())
             .then((data) => {
                 const filteredData = data.filter(
                     (item) =>
-                        item["Brand_Name"].toLowerCase() ===
-                        brand_name.toLowerCase()
+                        item["brand"].toLowerCase() === brand_name.toLowerCase()
                 );
                 setBrandData(filteredData);
             })
@@ -26,7 +25,6 @@ const BrandDetails = () => {
         return <div>Loading...</div>;
     }
 
-    // Check if there are no products for this brand
     if (brandData.length === 0) {
         return (
             <div className="text-center text-3xl font-bold">
@@ -45,23 +43,23 @@ const BrandDetails = () => {
                         <figure>
                             <img
                                 className="h-[300px] w-[300px]"
-                                src={item.img}
+                                src={item.photo}
                                 alt="Movie"
                             />
                         </figure>
                         <div className="card-body  ">
-                            <p>Brand Name: {item["Brand_Name"]}</p>
-                            <p>Type: {item.Type}</p>
-                            <p>Price: ${item.Price}</p>
-                            <p>Rating: {item.Rating}</p>
+                            <p>Brand Name: {item["brand"]}</p>
+                            <p>Type: {item.type}</p>
+                            <p>Price: ${item.price}</p>
+                            <p>Rating: {item.rating}</p>
 
                             <button
-                                onClick={() => handleDetailsClick(item.id)}
+                                onClick={() => handleDetailsClick(item._id)}
                                 className="btn btn-xs bg-red-300 w-1/2">
                                 Details
                             </button>
                             <button
-                                onClick={() => handleUpdateClick(item.id)}
+                                onClick={() => handleUpdateClick(item._id)}
                                 className="btn btn-xs bg-sky-300 w-1/2">
                                 Update
                             </button>
