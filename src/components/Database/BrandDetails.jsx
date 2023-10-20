@@ -60,7 +60,9 @@ const BrandDetails = () => {
                                 className="btn btn-xs bg-red-300 w-1/2">
                                 Details
                             </button>
-                            <button className="btn btn-xs bg-sky-300 w-1/2">
+                            <button
+                                onClick={() => handleUpdateClick(item.id)}
+                                className="btn btn-xs bg-sky-300 w-1/2">
                                 Update
                             </button>
                         </div>
@@ -137,6 +139,10 @@ const BrandDetails = () => {
 
     function handleDetailsClick(productId) {
         navigate(`/products/${productId}`);
+    }
+
+    function handleUpdateClick(productId) {
+        navigate(`/products/${productId}/update`);
     }
 };
 

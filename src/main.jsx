@@ -15,6 +15,8 @@ import Registration from "./components/Auth/Registration";
 import NotFound from "./components/NotFound";
 import BrandDetails from "./components/Database/BrandDetails";
 import ProductDetails from "./components/Database/ProductDetails";
+import PrivateRoute from "./components/PrivateRoute";
+import ProductUpdate from "./ProductUpdate";
 
 const router = createBrowserRouter([
     {
@@ -34,12 +36,16 @@ const router = createBrowserRouter([
                 element: <MyCart></MyCart>,
             },
             {
-                path: "/brands/:brand_name", // Dynamic route for brand details
+                path: "/brands/:brand_name",
                 element: <BrandDetails></BrandDetails>,
             },
             {
-                path: "/products/:productId", // Dynamic route for product details
-                element: <ProductDetails></ProductDetails>,
+                path: "/products/:productId",
+                element: (
+                    <PrivateRoute>
+                        <ProductDetails></ProductDetails>
+                    </PrivateRoute>
+                ),
             },
 
             {
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 element: <NotFound></NotFound>,
+            },
+            {
+                path: "/products/:productId/update",
+                element: <ProductUpdate></ProductUpdate>,
             },
         ],
     },
