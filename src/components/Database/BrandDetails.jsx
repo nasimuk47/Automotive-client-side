@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
 import Footer from "../Footer";
 
 const BrandDetails = () => {
     const { brand_name } = useParams();
     const [brandData, setBrandData] = useState(null);
+    const navigate = useNavigate(); // Use the useNavigate hook for navigation
 
     useEffect(() => {
         fetch("/fake.json")
@@ -54,11 +55,13 @@ const BrandDetails = () => {
                             <p>Price: ${item.Price}</p>
                             <p>Rating: {item.Rating}</p>
 
-                            <button className="btn btn-xs bg-red-300 w-1/2">
+                            <button
+                                onClick={() => handleDetailsClick(item.id)}
+                                className="btn btn-xs bg-red-300 w-1/2">
                                 Details
                             </button>
                             <button className="btn btn-xs bg-sky-300 w-1/2">
-                                update
+                                Update
                             </button>
                         </div>
                     </div>
@@ -131,6 +134,10 @@ const BrandDetails = () => {
             <Footer></Footer>
         </div>
     );
+
+    function handleDetailsClick(productId) {
+        navigate(`/products/${productId}`);
+    }
 };
 
 export default BrandDetails;
