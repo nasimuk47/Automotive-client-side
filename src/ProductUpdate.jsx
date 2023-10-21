@@ -34,7 +34,7 @@ const ProductUpdate = () => {
 
         console.log(newUpdateCard);
 
-        fetch(`http://localhost:5000/Cards/${_id}`, {
+        fetch(`http://localhost:5000/card/${_id}`, {
             method: "PUT",
 
             headers: {
@@ -58,8 +58,6 @@ const ProductUpdate = () => {
                 }
             });
     };
-
-    
 
     return (
         <div>
@@ -88,7 +86,7 @@ const ProductUpdate = () => {
                                 <span className="label-text">Brand Name</span>
                             </label>
                             <label className="select select-bordered w-full">
-                                <select name="brand">
+                                <select name="brand" defaultValue={brand}>
                                     <option value="Toyota">Toyota</option>
                                     <option value="Mercedes-Benz">
                                         Mercedes-Benz
@@ -107,7 +105,7 @@ const ProductUpdate = () => {
                                 <span className="label-text">Type</span>
                             </label>
                             <label className="select select-bordered w-full">
-                                <select name="type">
+                                <select name="type" defaultValue={type}>
                                     <option value="car">Car</option>
                                     <option value="Bike">Bike</option>
                                     <option value="luxurious car">

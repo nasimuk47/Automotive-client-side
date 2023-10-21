@@ -13,12 +13,12 @@ const BrandDetails = () => {
             .then((response) => response.json())
             .then((data) => {
                 const filteredData = data.filter(
-                    (item) =>
-                        item["brand"].toLowerCase() === brand_name.toLowerCase()
+                    (item) => item?.brand === brand_name
                 );
                 setBrandData(filteredData);
             })
             .catch((error) => console.error(error));
+        console.log(brand_name);
     }, [brand_name]);
 
     if (!brandData) {

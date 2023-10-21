@@ -54,7 +54,7 @@ const Navber = () => {
                     {user ? (
                         <>
                             <img
-                                src={user.photoURL}
+                                src={user?.photoURL}
                                 alt="User Profile"
                                 className="h-10 rounded-full"
                             />

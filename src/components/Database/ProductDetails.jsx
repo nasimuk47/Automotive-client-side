@@ -1,19 +1,46 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Auth/Authprovider";
 
 const ProductDetails = () => {
-    const handleAddCard = (event) => {
-        fetch("http://localhost:5000/Cards", {
+    const { user } = useContext(AuthContext);
+    const { productId } = useParams();
+    const [productData, setProductData] = useState(null);
+    const handleAddCard = () => {
+        const name = productData?.name;
+        const brand = productData?.brand;
+        const type = productData?.type;
+        const price = productData.price;
+        const description = productData.description;
+        const rating = productData.rating;
+        const photo = productData.photo;
+
+        const userEmail = user ? user.email : null;
+
+        const addCard = {
+            name,
+            brand,
+            type,
+            price,
+            description,
+            rating,
+            photo,
+            userEmail,
+        };
+
+        console.log(addCard);
+
+        fetch("http://localhost:5000/myCart", {
             method: "POST",
 
             headers: {
                 "content-type": "application/json",
             },
 
-            body: JSON.stringify(),
+            body: JSON.stringify(addCard),
         })
             .then((res) => res.json())
 
@@ -30,9 +57,6 @@ const ProductDetails = () => {
                 }
             });
     };
-
-    const { productId } = useParams();
-    const [productData, setProductData] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:5000/card")
