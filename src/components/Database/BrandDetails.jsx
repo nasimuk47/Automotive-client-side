@@ -9,7 +9,7 @@ const BrandDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/card")
+        fetch("https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/card")
             .then((response) => response.json())
             .then((data) => {
                 const filteredData = data.filter(

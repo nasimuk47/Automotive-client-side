@@ -1,22 +1,23 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Auth/Authprovider";
 
 const MyCart = () => {
     const { user } = useContext(AuthContext);
     const [cartData, setCartData] = useState([]);
-    const UserEmail = user?.userEmail;
+    const userEmail = user?.email;
 
     useEffect(() => {
-        fetch("http://localhost:5000/myCart")
-            .then((response) => {
-                response.json();
-            })
+        fetch(
+            "https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/myCart"
+        )
+            .then((res) => res.json())
             .then((data) => {
-                setCartData(cartData);
-                console.log(data, "this is data");
-            })
-            .catch((error) => {
-                console.error(error);
+                const filteredData = data.filter(
+                    (i) => i?.userEmail === userEmail
+                );
+
+                setCartData(filteredData);
             });
     });
 

@@ -33,15 +33,18 @@ const ProductDetails = () => {
 
         console.log(addCard);
 
-        fetch("http://localhost:5000/myCart", {
-            method: "POST",
+        fetch(
+            "https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/myCart",
+            {
+                method: "POST",
 
-            headers: {
-                "content-type": "application/json",
-            },
+                headers: {
+                    "content-type": "application/json",
+                },
 
-            body: JSON.stringify(addCard),
-        })
+                body: JSON.stringify(addCard),
+            }
+        )
             .then((res) => res.json())
 
             .then((data) => {
@@ -59,7 +62,9 @@ const ProductDetails = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:5000/card")
+        fetch(
+            "https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/card"
+        )
             .then((response) => response.json())
             .then((data) => {
                 const product = data.find((item) => item._id === productId);

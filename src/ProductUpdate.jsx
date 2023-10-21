@@ -34,15 +34,18 @@ const ProductUpdate = () => {
 
         console.log(newUpdateCard);
 
-        fetch(`http://localhost:5000/card/${_id}`, {
-            method: "PUT",
+        fetch(
+            `https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/card/${_id}`,
+            {
+                method: "PUT",
 
-            headers: {
-                "content-type": "application/json",
-            },
+                headers: {
+                    "content-type": "application/json",
+                },
 
-            body: JSON.stringify(newUpdateCard),
-        })
+                body: JSON.stringify(newUpdateCard),
+            }
+        )
             .then((res) => res.json())
 
             .then((data) => {

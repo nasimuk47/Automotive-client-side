@@ -72,7 +72,9 @@ const router = createBrowserRouter([
                 path: "/products/update/:id",
                 element: <ProductUpdate></ProductUpdate>,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/card/${params.id}`),
+                    fetch(
+                        `https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/card/${params.id}`
+                    ),
             },
         ],
     },

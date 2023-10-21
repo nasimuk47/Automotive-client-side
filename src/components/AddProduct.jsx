@@ -28,15 +28,18 @@ const AddProduct = () => {
 
         console.log(newCard);
 
-        fetch("http://localhost:5000/Cards", {
-            method: "POST",
+        fetch(
+            "https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/Cards",
+            {
+                method: "POST",
 
-            headers: {
-                "content-type": "application/json",
-            },
+                headers: {
+                    "content-type": "application/json",
+                },
 
-            body: JSON.stringify(newCard),
-        })
+                body: JSON.stringify(newCard),
+            }
+        )
             .then((res) => res.json())
 
             .then((data) => {
