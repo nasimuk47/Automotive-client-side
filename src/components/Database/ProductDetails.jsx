@@ -2,8 +2,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
+    const handleAddCard = (event) => {
+        fetch("http://localhost:5000/Cards", {
+            method: "POST",
+
+            headers: {
+                "content-type": "application/json",
+            },
+
+            body: JSON.stringify(),
+        })
+            .then((res) => res.json())
+
+            .then((data) => {
+                console.log(data);
+
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Product added successfully",
+                        icon: "success",
+                        confirmButtonText: "Cool",
+                    });
+                }
+            });
+    };
+
     const { productId } = useParams();
     const [productData, setProductData] = useState(null);
 
@@ -50,7 +77,9 @@ const ProductDetails = () => {
                         </p>
 
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">
+                            <button
+                                onClick={handleAddCard}
+                                className="btn btn-primary">
                                 ADD TO CART
                             </button>
                         </div>

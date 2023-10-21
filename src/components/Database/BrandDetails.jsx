@@ -140,7 +140,7 @@ const BrandDetails = () => {
     }
 
     function handleUpdateClick(productId) {
-        navigate(`/products/${productId}/update`);
+        navigate(`/products/update/${productId}`);
     }
 };
 

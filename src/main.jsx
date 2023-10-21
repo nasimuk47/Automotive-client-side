@@ -29,7 +29,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/AddProduct",
-                element: <AddProduct></AddProduct>,
+                element: (
+                    <PrivateRoute>
+                        <AddProduct></AddProduct>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/MyCart",
@@ -65,8 +69,10 @@ const router = createBrowserRouter([
                 element: <NotFound></NotFound>,
             },
             {
-                path: "/products/:productId/update",
+                path: "/products/update/:id",
                 element: <ProductUpdate></ProductUpdate>,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/card/${params._id}`),
             },
         ],
     },
@@ -76,7 +82,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <AuthProvider>
             {" "}
-            {/* Ensure AuthProvider wraps your entire app */}
             <RouterProvider router={router} />
         </AuthProvider>
     </React.StrictMode>

@@ -1,7 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductUpdate = () => {
+    const update = useLoaderData();
+
+    const { _id, name, brand, type, price, description, rating, photo } =
+        update;
+
     const handleUpdate = (event) => {
         event.preventDefault();
 
@@ -26,7 +33,33 @@ const ProductUpdate = () => {
         };
 
         console.log(newUpdateCard);
+
+        fetch(`http://localhost:5000/Cards/${_id}`, {
+            method: "PUT",
+
+            headers: {
+                "content-type": "application/json",
+            },
+
+            body: JSON.stringify(newUpdateCard),
+        })
+            .then((res) => res.json())
+
+            .then((data) => {
+                console.log(data);
+
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "car updated successfully",
+                        icon: "success",
+                        confirmButtonText: "Cool",
+                    });
+                }
+            });
     };
+
+    
 
     return (
         <div>
@@ -44,6 +77,7 @@ const ProductUpdate = () => {
                                 <input
                                     type="text"
                                     name="name"
+                                    defaultValue={name}
                                     placeholder="Name"
                                     className="input input-bordered w-full"
                                 />
@@ -90,6 +124,7 @@ const ProductUpdate = () => {
                                 <input
                                     type="text"
                                     name="price"
+                                    defaultValue={price}
                                     placeholder="Price"
                                     className="input input-bordered w-full"
                                 />
@@ -107,6 +142,7 @@ const ProductUpdate = () => {
                                 <input
                                     type="text"
                                     name="description"
+                                    defaultValue={description}
                                     placeholder="Short Description"
                                     className="input input-bordered w-full"
                                 />
@@ -120,6 +156,7 @@ const ProductUpdate = () => {
                                 <input
                                     type="number"
                                     name="rating"
+                                    defaultValue={rating}
                                     placeholder="Rating"
                                     className="input input-bordered w-full"
                                 />
@@ -134,6 +171,7 @@ const ProductUpdate = () => {
                             <input
                                 type="text"
                                 name="photo"
+                                defaultValue={photo}
                                 placeholder="Photo URL"
                                 className="input input-bordered w-full"
                             />
