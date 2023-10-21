@@ -7,6 +7,21 @@ const MyCart = () => {
     const [cartData, setCartData] = useState([]);
     const userEmail = user?.email;
 
+    const handleDelete = (id) => {
+        // make sure user is confirmed to delete
+        fetch(`http://localhost:5000/myCart${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount > 0) {
+                    console.log("deleted successfully");
+                    // remove the user from the UI
+                    window.location.reload();
+                }
+            });
+    };
+
     useEffect(() => {
         fetch(
             "https://driver-zen-server-side-3gwzl4j11-nasimuk47.vercel.app/myCart"
@@ -16,10 +31,12 @@ const MyCart = () => {
                 const filteredData = data.filter(
                     (i) => i?.userEmail === userEmail
                 );
-
                 setCartData(filteredData);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
             });
-    });
+    }, [userEmail]);
 
     return (
         <div>
@@ -46,7 +63,11 @@ const MyCart = () => {
 
                                 <p>Description: {product.description}</p>
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">
+                                    <button
+                                        onClick={() =>
+                                            handleDelete(product?._id)
+                                        }
+                                        className="btn btn-primary">
                                         Delete
                                     </button>
                                 </div>
